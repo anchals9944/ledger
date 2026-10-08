@@ -63,8 +63,9 @@ No real payment provider is involved.
 
 ## Decisions
 
-- **Code Connect is not used.** It needs an Organization plan. `figma-map.json` does the
-  same job for the model: Figma set → React component and props.
+- **Component mapping.** If the organization has Code Connect, the mapping lives there.
+  If not, `figma-map.json` does the same job for the model: Figma set → React component
+  and props.
 - **Tailwind v4 with `@theme`** and the default palette removed, so a color that is not a
   token does not exist as a class.
 - **Spacing is px/4** with only the Figma steps allowed (1 2 3 4 6 8 12 16). See F6 for

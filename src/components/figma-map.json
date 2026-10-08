@@ -1,5 +1,5 @@
 {
-  "$comment": "Maps Figma component sets in the Ledger Design System file to React components and props. Stands in for Code Connect, which needs an Organization plan. Node IDs are in the Components page of file ejw6rrIvQrM08Ksj7jXZVa.",
+  "$comment": "Maps Figma component sets in the Ledger Design System file to React components and props. Does the job of Code Connect where Code Connect is not set up. Node IDs are in the Components page of file ejw6rrIvQrM08Ksj7jXZVa.",
   "Button": {
     "figmaNodeId": "6:122",
     "component": "Button",
