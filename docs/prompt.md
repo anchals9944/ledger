@@ -10,7 +10,7 @@ You are the front-end engineer on Ledger. Read `CLAUDE.md` first.
 **Task.** Build the "Review and pay" checkout screen as `src/screens/ReviewAndPay.tsx`
 from this Figma frame, and wire it as the app's route:
 
-https://www.figma.com/design/OljKS32WSEmXRERf2ftwNe/Ledger-Checkout?node-id=3-301
+https://www.figma.com/design/KBGQ3a9FTqTMjeTcMJ6ybZ/Ledger-Checkout?node-id=3-301
 
 The frame is the 1280 default state. The 390 default state is node `4:684`. The other
 states are the sibling frames on the same page; read the four `_note` frames above them

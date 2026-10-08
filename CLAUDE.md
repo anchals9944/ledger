@@ -6,7 +6,7 @@ components are the system; this file only says how to use them.
 ## Where things come from
 
 - **Tokens** are generated. `tokens/figma.tokens.json` is the export from the Ledger
-  Design System Figma file (`S6tPQwUGxVVE1bOlAuFRPR`). `npm run tokens` turns it into
+  Design System Figma file (`ejw6rrIvQrM08Ksj7jXZVa`). `npm run tokens` turns it into
   `src/tokens/theme.css` (Tailwind v4 `@theme`) and `src/tokens/tokens.json`. Never edit
   the generated files. To change a value, change it in Figma and re-export.
 - **Components** live in `src/components/`. Each one mirrors a Figma component set and
