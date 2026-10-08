@@ -32,7 +32,7 @@ Each finding: what, where, spec vs built, root cause, where the fix went. Newest
 - **Found by:** the plan (`docs/run-plan.md`), before any code.
 - **Where:** `docs/prompt.md` asks for a timeout path from the mocked payment call. The Figma page defines 9 states and none is a timeout.
 - **Root cause:** the prompt and the frames were written separately. A state the code needs was never designed.
-- **Fix:** code reuses the declined layout with its own copy ("We could not reach the payment provider. Nothing was charged. Check your connection and try again." with a Try again action). Open: add a `timeout` frame at both widths to the Checkout file so the design owns that copy. Until then the test suite does not screenshot it.
+- **Fix:** code reuses the declined layout with its own copy ("We could not reach the payment provider. Nothing was charged. Check your connection and try again." with a Try again action). Closed the same day: `timeout` frames added at 1280 and 390 to the Checkout file, the page note now lists 10 states, and `tests/e2e/checkout.spec.ts` walks the timeout path with axe and a screenshot.
 - **Lesson:** every outcome the prompt names must exist as a frame first, or the model writes the design.
 
 ## F2 · 2026-10-08 · Inline text action had no component

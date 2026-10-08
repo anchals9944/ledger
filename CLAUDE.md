@@ -10,8 +10,8 @@ components are the system; this file only says how to use them.
   `src/tokens/theme.css` (Tailwind v4 `@theme`) and `src/tokens/tokens.json`. Never edit
   the generated files. To change a value, change it in Figma and re-export.
 - **Components** live in `src/components/`. Each one mirrors a Figma component set and
-  its variant names: `Button`, `Input`, `RadioCard`, `Card`, `Alert`. The map from Figma
-  component to React component and props is `src/components/figma-map.json`.
+  its variant names: `Button`, `Input`, `RadioCard`, `Card`, `Alert`, `TextLink`. The
+  map from Figma component to React component and props is `src/components/figma-map.json`.
 - **Icons** are Lucide, 20px in controls, `strokeWidth={1.5}`, colored by `text-icon-*`.
 
 ## Rules

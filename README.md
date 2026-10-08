@@ -7,7 +7,7 @@ system. Six findings from one screen are logged in `docs/qa-findings.md`, four o
 changed the Figma library.
 
 Figma: **Ledger Design System** (tokens, 6 component sets, 12 icons) and **Ledger
-Checkout** (the "Review and pay" screen in 9 states at 390 and 1280, with behavior notes).
+Checkout** (the "Review and pay" screen in 10 states at 390 and 1280, with behavior notes).
 
 ## The loop
 

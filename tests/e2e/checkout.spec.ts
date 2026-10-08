@@ -2,7 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 // Walks every state the Figma page defines, at both widths (projects), with axe at each stop.
-const OK = "4242 4242 4242 4242", DECLINED = "4000 0000 0000 0002";
+const OK = "4242 4242 4242 4242", DECLINED = "4000 0000 0000 0002", TIMEOUT = "4000 0000 0000 0010";
 
 async function axe(page: Page, label: string) {
   const r = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
@@ -86,6 +86,18 @@ test("declined says no charge was made and offers recovery", async ({ page }) =>
   await page.getByRole("button", { name: "Use a different card" }).click();
   await expect(page.getByLabel("Card number")).toBeFocused();
   await expect(page.getByLabel("Card number")).toHaveValue("");
+});
+
+test("timeout says nothing was charged and lets you try again", async ({ page }) => {
+  await page.goto("/checkout");
+  await fillCard(page, TIMEOUT);
+  await page.getByRole("button", { name: "Pay $128.00" }).click();
+  const alert = page.getByRole("alert").filter({ hasText: "We could not reach the payment provider" });
+  await expect(alert).toContainText("Nothing was charged");
+  await axe(page, "timeout");
+  await expect(page).toHaveScreenshot("timeout.png", { fullPage: true, maxDiffPixelRatio: 0.01 });
+  await page.getByRole("button", { name: "Try again" }).click();
+  await expect(page.getByRole("button", { name: "Pay $128.00" })).toBeEnabled();
 });
 
 test("success names the order, amount and card", async ({ page }) => {
