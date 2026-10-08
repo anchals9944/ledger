@@ -1,42 +1,48 @@
 # Design QA: Review and pay
 
-Run after the gates pass. Compare the running app with the Figma frames side by side at
-390 and 1280. One row per check. Record the finding, not an opinion.
+Run after the gates pass. Compared the Playwright renders (`tests/e2e/__screenshots__`)
+with the Figma frames side by side at 390 and 1280, 2026-10-08, after findings F1 to F6.
+Pass 1 is the first run; Pass 2 is after the fixes.
 
-| # | Check | Spec (Figma) | Built | Pass | Note |
+| # | Check | Spec (Figma) | Pass 1 | Pass 2 | Note |
 |---|---|---|---|---|---|
-| 1 | Type: heading | h1, Inter Semi Bold 24/32 | | | |
-| 2 | Type: body and labels | body 16/24, label Medium 14/20, caption 12/16 | | | |
-| 3 | Color: surfaces | canvas #F8F9FA, surface #FFFFFF, subtle #F1F3F5 | | | |
-| 4 | Color: text | primary #12171D, secondary #515B67, placeholder #6F7A86 | | | |
-| 5 | Color: CTA | primary bg #0B5C4D, hover #084A3E, text #FFFFFF | | | |
-| 6 | Color: states | error #B42318 on #FDECEA, success #1F7A3A on #E6F4EA, selected #E3F1ED with #0B5C4D border | | | |
-| 7 | Spacing: card padding and gaps | space/5 24 inside cards, space/4 16 between fields, space/6 32 between columns | | | |
-| 8 | Radius | md 8 on controls, lg 12 on cards, full on radio dot | | | |
-| 9 | Borders | 1px border/default; 2px focus and selected | | | |
-| 10 | Control heights | Input 44, Button md 44, Button lg 52 | | | |
-| 11 | Button hierarchy | One primary (Pay), Apply secondary, Back tertiary | | | |
-| 12 | Hover states | primary darkens, secondary and tertiary get subtle bg | | | |
-| 13 | Focus states | 2px focus/ring outside, visible on every control via keyboard | | | |
-| 14 | Disabled states | disabled bg and text tokens; cursor not-allowed | | | |
-| 15 | Loading state | spinner replaces icon, label "Processing payment", inputs disabled, no layout shift | | | |
-| 16 | Validation errors | red border, alert icon, specific message replaces helper, focus to first invalid | | | |
-| 17 | Declined | Alert at top of form, says no charge made, action clears card fields | | | |
-| 18 | Promo applied | success Alert with Remove, Discount line, total $116.00 | | | |
-| 19 | Promo invalid | field-level error on Code | | | |
-| 20 | Success screen | order number, amount, card, receipt line, View order primary | | | |
-| 21 | Empty cart | one primary action | | | |
-| 22 | 390 layout | single column, summary first, 16px gutters, Expiry and CVC share a row | | | |
-| 23 | 1280 layout | 960 content, 32 gap, 360 aside | | | |
-| 24 | Icons | Lucide, 20px, 1.5 stroke, token colors | | | |
-| 25 | Copy | matches frames word for word | | | |
-| 26 | Hit targets | 44px minimum, radio card whole area | | | |
-| 27 | Semantics | labels linked, aria-invalid, role=alert on errors, role=status on success | | | |
-| 28 | axe | 0 violations at both widths | | | |
-| 29 | Screenshot diff | within 1% of the Figma export at both widths | | | |
-| 30 | Raw values | `npm run lint:tokens` passes | | | |
+| 1 | Type: heading | h1, Inter Semi Bold 24/32 | ✓ | ✓ | |
+| 2 | Type: body and labels | body 16/24, label Medium 14/20, caption 12/16 | ✓ | ✓ | |
+| 3 | Color: surfaces | canvas #F8F9FA, surface #FFFFFF, subtle #F1F3F5 | ✓ | ✓ | |
+| 4 | Color: text | primary #12171D, secondary #515B67, placeholder (neutral/500) | ✗ | ✓ | F1: neutral/500 #6F7A86 → #5F6B7A |
+| 5 | Color: CTA | primary bg #0B5C4D, hover #084A3E, text #FFFFFF | ✓ | ✓ | |
+| 6 | Color: states | error, success, selected tokens | ✓ | ✓ | |
+| 7 | Spacing: card padding and gaps | 24 inside cards, 16 between fields, 32 between columns | ✗ | ✓ | F6: `p-5` meant 24 but the scale was mis-mapped |
+| 8 | Radius | md 8 controls, lg 12 cards, full radio dot | ✓ | ✓ | |
+| 9 | Borders | 1px default; 2px focus and selected | ✓ | ✓ | |
+| 10 | Control heights | Input 44, Button md 44, lg 52 | ✓ | ✓ | |
+| 11 | Button hierarchy | One primary, Apply secondary, Back tertiary | ✓ | ✓ | |
+| 12 | Hover states | primary darkens, secondary/tertiary subtle bg | ✓ | ✓ | checked manually in the browser |
+| 13 | Focus states | 2px focus ring, keyboard visible on every control | ✓ | ✓ | e2e `field focus`, showcase focus test |
+| 14 | Disabled states | disabled tokens, cursor | ✓ | ✓ | submitting screenshot |
+| 15 | Loading state | spinner, "Processing payment", inputs disabled, no layout shift | ✓ | ✓ | e2e asserts button height unchanged |
+| 16 | Validation errors | red border, icon, message replaces helper, focus to first invalid | ✗ (mobile) | ✓ | F4 focus timing, F5 layout shift |
+| 17 | Declined | Alert at top, "No charge was made", recovery clears card fields | ✓ | ✓ | |
+| 18 | Promo applied | success Alert, Discount line, total $116.00 | ✓ | ✓ | |
+| 19 | Promo invalid | field-level error on Code | ✓ | ✓ | |
+| 20 | Success screen | order, amount, card, receipt line, View order primary | ✓ | ✓ | |
+| 21 | Empty cart | one primary action | ✓ | ✓ | |
+| 22 | 390 layout | single column, summary first, 16 gutters, Expiry + CVC in a row | ✓ | ✓ | |
+| 23 | 1280 layout | 960 content, 32 gap, 360 aside, sticky | ✓ | ✓ | sticky is a code addition the frame implies |
+| 24 | Icons | Lucide, 20px, 1.5 stroke, token colors | ✗ | ✓ | F6: `size-5` resolved to nothing, SVG stayed 24 |
+| 25 | Copy | matches frames word for word | ✓ | ✓ | timeout copy exists only in code (F3) |
+| 26 | Hit targets | 44 minimum, radio card whole area | ✓ | ✓ | |
+| 27 | Semantics | labels, aria-invalid, role=alert, role=status, fieldset label | ✗ | ✓ | fieldset pointed at a missing id; fixed before e2e |
+| 28 | axe | 0 violations at both widths, every state | ✗ | ✓ | F1 |
+| 29 | Screenshot diff | within 1% of reference at both widths | ✓ | ✓ | references regenerated after F6 |
+| 30 | Raw values | `npm run lint:tokens` passes | ✓ | ✓ | the rule set grew in F6 |
+| 31 | Radio selected dot | 10px dot inside the ring | ✗ | ✓ | F6: `size-2.5` resolved to nothing |
+| 32 | Apply alignment | level with the Code field | ✗ | ✓ | F6: `mt-7` resolved to nothing |
+| 33 | Inline text action | "Change" inline in the sentence | ✗ | ✓ | F2: TextLink added to the system |
+
+Pass 1: 24 of 33. Pass 2: 33 of 33.
 
 ## Findings
 
-Record each gap as: what, where, spec vs built, root cause (prompt, component, token,
-rules, or generation), and where the fix went (Figma, code, rules).
+See `docs/qa-findings.md`. F1, F2, F5 and F6 went back into the Figma library; F3 is
+open on the design side; F4 was code only.
