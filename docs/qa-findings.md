@@ -2,6 +2,18 @@
 
 Each finding: what, where, spec vs built, root cause, where the fix went. Newest first.
 
+## F7 · 2026-10-08 · 390 stacked the blocks 8px too far apart
+
+- **Found by:** visual QA on the portfolio figure that puts the Figma 390 frame beside the 390 render. The render's cards sat 8px lower than the frame, and the offset grew by 8px at every card.
+- **What happened:** `Screen` used `gap-8` (32px) between header, summary, form and pay at both widths, and the form used `gap-6` (24px) between cards at both widths. The 390 frame (`4:684`) uses 24 between blocks and 16 between cards; only the 1280 frame (`3:301`) uses 32 and 24. The 390 frame also centers Back to shipping under the Pay button; the code left-aligned it at both widths.
+- **Spec vs built:** Figma 390 header → summary 24, built 32. Cards 16 apart, built 24. Pay block 24 below the form, built 24 (and 16 after the gap fix, until `mt-2` restored it). Back button centered, built left.
+- **Root cause:** the generation read the 1280 frame first and carried its spacing to 390. Rule 6 says build for both widths, and the `_note` frames cover layout, focus order and accessibility, but no note states the 390 spacing, so the model had nothing to stop on.
+- **Fix, in order:**
+  1. Code: `gap-6 lg:gap-8` on `Screen`, `gap-4 lg:gap-6` on the form, `mt-2` on the mobile pay block, `self-center lg:self-start` on Back to shipping. Token steps only, guardrail green.
+  2. Test: the 8 mobile screenshots that include the form were regenerated; success and empty cart did not change. 28 of 28 pass.
+  3. Figma: nothing to change, the frames were right. Open: add a line to the breakpoint `_note` naming the 390 gaps (24 between blocks, 16 between cards), so the next generation reads it.
+- **Lesson:** a screenshot diff against a reference the code itself produced cannot catch this. The reference has to be the frame, at every width, before the first snapshot is committed.
+
 ## F6 · 2026-10-08 · Spacing utilities resolved to nothing, silently
 
 - **Found by:** side-by-side visual QA of the Playwright screenshots against the Figma frames (`docs/qa-checklist.md` rows 7, 10, 24). Three symptoms: the selected radio card had no inner dot, Apply sat 20px below the Code field, the Lock icon in Pay rendered at 24px where the frame says 20.

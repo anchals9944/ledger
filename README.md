@@ -3,7 +3,7 @@
 A small design system and one checkout screen, built Figma to code with Claude Code.
 The point is the workflow: tokens flow from Figma, components mirror Figma sets, the
 model reads the frame and the rules, and the QA that follows feeds fixes back into the
-system. Six findings from one screen are logged in `docs/qa-findings.md`, four of them
+system. Seven findings from one screen are logged in `docs/qa-findings.md`, four of them
 changed the Figma library.
 
 Figma: **Ledger Design System** (tokens, 6 component sets, 12 icons) and **Ledger
@@ -59,7 +59,7 @@ No real payment provider is involved.
 | `docs/prompt.md` | The exact brief for the generation run |
 | `docs/run-plan.md` | The plan the model wrote before code, including what the system was missing |
 | `docs/qa-checklist.md` | 33 checks, pass 1 and pass 2 |
-| `docs/qa-findings.md` | F1 to F6: what, where, root cause, where the fix went |
+| `docs/qa-findings.md` | F1 to F7: what, where, root cause, where the fix went |
 
 ## Decisions
 

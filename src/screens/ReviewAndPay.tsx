@@ -120,7 +120,7 @@ export function ReviewAndPay({ cart = ITEMS, onBack }: { cart?: Item[]; onBack?:
         <ShieldCheck aria-hidden className="size-5 shrink-0 text-icon-muted" strokeWidth={1.5} />
         Encrypted payment. Nothing is charged until you confirm.
       </p>
-      <Button variant="tertiary" iconLeft={<ArrowLeft strokeWidth={1.5} />} className="self-start" onClick={onBack} disabled={busy}>
+      <Button variant="tertiary" iconLeft={<ArrowLeft strokeWidth={1.5} />} className="self-center lg:self-start" onClick={onBack} disabled={busy}>
         Back to shipping
       </Button>
     </div>
@@ -136,7 +136,7 @@ export function ReviewAndPay({ cart = ITEMS, onBack }: { cart?: Item[]; onBack?:
       <div className="lg:hidden">{summary}</div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
-        <form id="checkout" onSubmit={submit} noValidate className="flex flex-col gap-6">
+        <form id="checkout" onSubmit={submit} noValidate className="flex flex-col gap-4 lg:gap-6">
           {(status === "declined" || status === "timeout") && (
             <Alert
               variant="error"
@@ -182,7 +182,7 @@ export function ReviewAndPay({ cart = ITEMS, onBack }: { cart?: Item[]; onBack?:
             )}
           </Card>
 
-          <div className="lg:hidden">{payBlock}</div>
+          <div className="mt-2 lg:hidden">{payBlock}</div>
         </form>
 
         <aside className="hidden lg:sticky lg:top-8 lg:flex lg:flex-col lg:gap-4">
@@ -195,7 +195,7 @@ export function ReviewAndPay({ cart = ITEMS, onBack }: { cart?: Item[]; onBack?:
 }
 
 function Screen({ children }: { children: React.ReactNode }) {
-  return <main className="mx-auto flex w-full max-w-[1024px] flex-col gap-8 px-4 py-8 lg:px-8 lg:py-16">{children}</main>;
+  return <main className="mx-auto flex w-full max-w-[1024px] flex-col gap-6 px-4 py-8 lg:gap-8 lg:px-8 lg:py-16">{children}</main>;
 }
 
 function Row({ l, r, tone }: { l: string; r: string; tone?: "success" }) {

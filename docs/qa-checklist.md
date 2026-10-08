@@ -2,6 +2,7 @@
 
 Run after the gates pass. Compared the Playwright renders (`tests/e2e/__screenshots__`)
 with the Figma frames side by side at 390 and 1280, 2026-10-08, after findings F1 to F6.
+F7 was found later the same day, on the portfolio figure that puts the two 390 images side by side.
 Pass 1 is the first run; Pass 2 is after the fixes.
 
 | # | Check | Spec (Figma) | Pass 1 | Pass 2 | Note |
@@ -12,7 +13,7 @@ Pass 1 is the first run; Pass 2 is after the fixes.
 | 4 | Color: text | primary #12171D, secondary #515B67, placeholder (neutral/500) | ✗ | ✓ | F1: neutral/500 #6F7A86 → #5F6B7A |
 | 5 | Color: CTA | primary bg #0B5C4D, hover #084A3E, text #FFFFFF | ✓ | ✓ | |
 | 6 | Color: states | error, success, selected tokens | ✓ | ✓ | |
-| 7 | Spacing: card padding and gaps | 24 inside cards, 16 between fields, 32 between columns | ✗ | ✓ | F6: `p-5` meant 24 but the scale was mis-mapped |
+| 7 | Spacing: card padding and gaps | 24 inside cards, 16 between fields, 32 between columns; at 390, 24 between blocks and 16 between cards | ✗ | ✓ | F6: `p-5` meant 24 but the scale was mis-mapped. F7: 390 reused the 1280 gaps |
 | 8 | Radius | md 8 controls, lg 12 cards, full radio dot | ✓ | ✓ | |
 | 9 | Borders | 1px default; 2px focus and selected | ✓ | ✓ | |
 | 10 | Control heights | Input 44, Button md 44, lg 52 | ✓ | ✓ | |
@@ -45,4 +46,4 @@ Pass 1: 24 of 33. Pass 2: 33 of 33.
 ## Findings
 
 See `docs/qa-findings.md`. F1, F2, F5 and F6 went back into the Figma library. F3 added
-two timeout frames to the Checkout file the same day. F4 was code only.
+two timeout frames to the Checkout file the same day. F4 and F7 were code only.
