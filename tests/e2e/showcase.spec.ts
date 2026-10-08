@@ -10,9 +10,11 @@ test("component showcase has no accessibility violations", async ({ page }) => {
 
 test("focus is visible on every control", async ({ page }) => {
   await page.goto("/");
+  // Keyboard focus, so :focus-visible applies on both projects.
+  await page.keyboard.press("Tab");
   const pay = page.getByRole("button", { name: "Pay $128.00" }).first();
-  await pay.focus();
-  await expect(pay).toHaveCSS("box-shadow", /rgb\(19, 140, 114\)/); // focus/ring = accent/500 — tokens-allow
+  await expect(pay).toBeFocused();
+  await expect(pay).toHaveCSS("box-shadow", /rgb\(19, 140, 114\)/); // focus/ring = accent/500 (tokens-allow)
 });
 
 test("showcase matches the reference screenshot", async ({ page }) => {
