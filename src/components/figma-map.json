@@ -65,6 +65,16 @@
     },
     "example": "<Alert variant=\"error\" title=\"Your card was declined\" body=\"No charge was made. Try another card or contact your bank.\" action={{ label: \"Use a different card\", onClick: reset }} />"
   },
+  "Text link": {
+    "component": "TextLink",
+    "import": "import { TextLink } from \"@/components\";",
+    "props": {
+      "State": { "note": "default/hover/focus come from CSS; disabled -> disabled" },
+      "Label": { "prop": "children" }
+    },
+    "example": "<p className=\"text-body-sm text-text-secondary\">Billing address is the same as shipping. <TextLink onClick={edit}>Change</TextLink></p>",
+    "note": "Added as finding F2. Inline action inside a sentence. Not for navigation; use an <a> for links to other pages."
+  },
   "icon/*": {
     "component": "lucide-react",
     "note": "Figma icon/<name> maps to the Lucide component of the same name in PascalCase: icon/credit-card -> CreditCard, icon/circle-alert -> CircleAlert. Always strokeWidth={1.5}."

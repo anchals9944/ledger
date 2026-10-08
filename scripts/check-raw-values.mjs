@@ -11,7 +11,7 @@ const RULES = [
   { name: "raw rgb()/hsl() color", re: /\b(rgba?|hsla?)\(/g, allowIn: [] },
   { name: "Tailwind default palette", re: /\b(bg|text|border|ring|fill|stroke)-(gray|slate|zinc|neutral|stone|red|green|blue|indigo|emerald|amber|rose|sky)-\d{2,3}\b/g, allowIn: [] },
   { name: "arbitrary color class", re: /\b(bg|text|border|ring)-\[#?[0-9a-fA-F]{3,8}\]/g, allowIn: [] },
-  { name: "raw <button>", re: /<button\b/g, allowIn: [/^src\/components\/(Button|Alert)\.tsx$/] },
+  { name: "raw <button>", re: /<button\b/g, allowIn: [/^src\/components\/(Button|Alert|TextLink)\.tsx$/] },
   { name: "raw <input>", re: /<input\b/g, allowIn: [/^src\/components\/(Input|RadioCard)\.tsx$/] },
   { name: "arbitrary px spacing", re: /\b(p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|gap|space-[xy])-\[\d+px\]/g, allowIn: [] },
 ];

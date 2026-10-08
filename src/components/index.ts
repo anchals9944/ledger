@@ -8,3 +8,4 @@ export { Card } from "./Card";
 export type { CardProps } from "./Card";
 export { Alert } from "./Alert";
 export type { AlertProps } from "./Alert";
+export { TextLink } from "./TextLink";

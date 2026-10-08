@@ -49,15 +49,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         />
         {error && <CircleAlert aria-hidden className="size-5 shrink-0 text-state-error-text" strokeWidth={1.5} />}
       </div>
-      {message && (
-        <p
-          id={messageId}
-          role={error ? "alert" : undefined}
-          className={clsx("text-caption", error ? "text-state-error-text" : disabled ? "text-state-disabled-text" : "text-text-secondary")}
-        >
-          {message}
-        </p>
-      )}
+      {/* The message line is always reserved (finding F5): an error appearing must not move the controls below it. */}
+      <p
+        id={messageId}
+        role={error ? "alert" : undefined}
+        className={clsx("min-h-4 text-caption", error ? "text-state-error-text" : disabled ? "text-state-disabled-text" : "text-text-secondary")}
+      >
+        {message}
+      </p>
     </div>
   );
 });
