@@ -14,6 +14,9 @@ const RULES = [
   { name: "raw <button>", re: /<button\b/g, allowIn: [/^src\/components\/(Button|Alert|TextLink)\.tsx$/] },
   { name: "raw <input>", re: /<input\b/g, allowIn: [/^src\/components\/(Input|RadioCard)\.tsx$/] },
   { name: "arbitrary px spacing", re: /\b(p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|gap|space-[xy])-\[\d+px\]/g, allowIn: [] },
+
+  // Spacing utilities are multiples of 4px. Only the Figma steps are allowed: 4 8 12 16 24 32 48 64 -> 1 2 3 4 6 8 12 16.
+  { name: "spacing off the Figma scale (allowed: 0 1 2 3 4 6 8 12 16)", re: /(?<![\w-])-?(?:p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|gap|gap-x|gap-y|space-x|space-y)-(?!(?:0|1|2|3|4|6|8|12|16)(?![\d.]))[\d.]+(?![\w-])/g, allowIn: [] },
 ];
 
 const files = [];

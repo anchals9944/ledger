@@ -30,7 +30,7 @@ const variants = {
 
 const sizes = {
   md: "h-[length:var(--size-control-md)] px-4",
-  lg: "h-[length:var(--size-control-lg)] px-5",
+  lg: "h-[length:var(--size-control-lg)] px-6",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(

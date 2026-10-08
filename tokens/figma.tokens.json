@@ -10,7 +10,8 @@
       "Typography:18"
     ],
     "changelog": [
-      "2026-10-08 neutral/500 #6F7A86 -> #5F6B7A (finding F1, contrast)"
+      "2026-10-08 neutral/500 #6F7A86 -> #5F6B7A (finding F1, contrast)",
+      "2026-10-08 space/1..8 renamed to space/4..64 by px value; theme emits --spacing: 4px (finding F6)"
     ]
   },
   "primitives": {
@@ -580,97 +581,13 @@
   },
   "layout": {
     "space": {
-      "1": {
+      "4": {
         "$type": "number",
         "$value": 4,
         "$extensions": {
           "com.figma": {
             "codeSyntax": {
-              "WEB": "var(--spacing-1)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "2": {
-        "$type": "number",
-        "$value": 8,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-2)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "3": {
-        "$type": "number",
-        "$value": 12,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-3)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "4": {
-        "$type": "number",
-        "$value": 16,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-4)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "5": {
-        "$type": "number",
-        "$value": 24,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-5)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "6": {
-        "$type": "number",
-        "$value": 32,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-6)"
-            },
-            "scopes": [
-              "GAP"
-            ]
-          }
-        }
-      },
-      "7": {
-        "$type": "number",
-        "$value": 48,
-        "$extensions": {
-          "com.figma": {
-            "codeSyntax": {
-              "WEB": "var(--spacing-7)"
+              "WEB": "p-1 \u00b7 gap-1 \u00b7 m-1 (4px)"
             },
             "scopes": [
               "GAP"
@@ -680,11 +597,95 @@
       },
       "8": {
         "$type": "number",
+        "$value": 8,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-2 \u00b7 gap-2 \u00b7 m-2 (8px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "12": {
+        "$type": "number",
+        "$value": 12,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-3 \u00b7 gap-3 \u00b7 m-3 (12px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "16": {
+        "$type": "number",
+        "$value": 16,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-4 \u00b7 gap-4 \u00b7 m-4 (16px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "24": {
+        "$type": "number",
+        "$value": 24,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-6 \u00b7 gap-6 \u00b7 m-6 (24px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "32": {
+        "$type": "number",
+        "$value": 32,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-8 \u00b7 gap-8 \u00b7 m-8 (32px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "48": {
+        "$type": "number",
+        "$value": 48,
+        "$extensions": {
+          "com.figma": {
+            "codeSyntax": {
+              "WEB": "p-12 \u00b7 gap-12 \u00b7 m-12 (48px)"
+            },
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "64": {
+        "$type": "number",
         "$value": 64,
         "$extensions": {
           "com.figma": {
             "codeSyntax": {
-              "WEB": "var(--spacing-8)"
+              "WEB": "p-16 \u00b7 gap-16 \u00b7 m-16 (64px)"
             },
             "scopes": [
               "GAP"

@@ -25,7 +25,7 @@ export function Alert({ variant, title, body, action, onClose, className, ...res
   const s = styles[variant];
   return (
     <div role={s.role} className={clsx("flex items-start gap-3 rounded-md border p-4", s.box, className)} {...rest}>
-      <s.Icon aria-hidden className={clsx("mt-0.5 size-5 shrink-0", s.fg)} strokeWidth={1.5} />
+      <s.Icon aria-hidden className={clsx("size-5 shrink-0", s.fg)} strokeWidth={1.5} />
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <p className={clsx("text-label", s.fg)}>{title}</p>
         {body && <p className={clsx("text-body-sm", variant === "info" ? "text-text-secondary" : s.fg)}>{body}</p>}

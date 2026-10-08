@@ -172,9 +172,12 @@ export function ReviewAndPay({ cart = ITEMS, onBack }: { cart?: Item[]; onBack?:
             ) : (
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
                 <Input label="Code" autoComplete="off" placeholder="Enter a code" value={values.promo} onChange={(e) => { set("promo")(e.target.value); if (promoState === "invalid") setPromoState("idle"); }} error={promoState === "invalid" ? MESSAGES.promoInvalid : undefined} disabled={busy} className="flex-1" />
-                <Button variant="secondary" onClick={applyPromo} disabled={busy || !values.promo.trim()} className="w-full sm:mt-7 sm:w-auto">
-                  Apply
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <span aria-hidden className="hidden h-5 sm:block" />{/* label height, keeps Apply level with the field */}
+                  <Button variant="secondary" onClick={applyPromo} disabled={busy || !values.promo.trim()} className="w-full sm:w-auto">
+                    Apply
+                  </Button>
+                </div>
               </div>
             )}
           </Card>

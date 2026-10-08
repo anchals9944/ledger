@@ -2,6 +2,19 @@
 
 Each finding: what, where, spec vs built, root cause, where the fix went. Newest first.
 
+## F6 · 2026-10-08 · Spacing utilities resolved to nothing, silently
+
+- **Found by:** side-by-side visual QA of the Playwright screenshots against the Figma frames (`docs/qa-checklist.md` rows 7, 10, 24). Three symptoms: the selected radio card had no inner dot, Apply sat 20px below the Code field, the Lock icon in Pay rendered at 24px where the frame says 20.
+- **What happened:** the generated theme named the spacing tokens `--spacing-1 … --spacing-8` (4 … 64px, the Figma steps) and reset Tailwind's base `--spacing`. Named steps work for `gap-3` or `p-5`, but any multiple outside the list (`size-2.5`, `size-5`, `mt-7`, `size-11`) is computed from the base and came out empty. No error, no class, no pixel. The token guardrail only looks for raw values, so it saw nothing wrong.
+- **Spec vs built:** Figma radio dot 10px, built 0. Figma Apply aligned with the field, built 48px down (`mt-7` was meant as 28). Figma icon 20px, built 24 (the SVG's own size won).
+- **Root cause:** token architecture, at the Figma-to-Tailwind boundary. Figma names steps by index (`space/5` = 24px); Tailwind names them by multiple (`p-6` = 24px). Two numbering systems for one scale, and the generated theme picked the wrong one.
+- **Fix, in order:**
+  1. Figma: spacing variables renamed by pixel value, `space/4 … space/64`, so the name is the value. Code syntax on each reads `p-6 · gap-6 · m-6 (24px)`.
+  2. Export re-run, Style Dictionary now emits one line, `--spacing: 4px`, so every numeric utility is px/4 and nothing resolves to nothing.
+  3. Guardrail: a new rule fails any spacing utility whose multiple is not a Figma step (allowed 1 2 3 4 6 8 12 16). `p-5` and `mt-7` are now errors, which is what the design system meant all along.
+  4. `CLAUDE.md` rule 1a states the mapping. Code: `p-5` → `p-6` in Card, `px-5` → `px-6` in Button lg, the Apply alignment uses a label-height spacer.
+- **Lesson:** a class that compiles to nothing is worse than a raw value, because nobody sees it. Make the base scale explicit and lint the multiples against the design steps.
+
 ## F5 · 2026-10-08 · An error message appearing moved the Pay button mid-tap (mobile)
 
 - **Found by:** Playwright, mobile project. The `validation errors` test kept failing after F4. A debug run showed `aria-invalid` count 1 after the tap, so submit never ran.

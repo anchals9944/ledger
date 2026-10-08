@@ -18,9 +18,13 @@ components are the system; this file only says how to use them.
 
 1. Use only token utilities. Colors are `bg-*`, `text-*`, `border-*` with the names in
    `theme.css` (`bg-cta-primary-bg`, `text-text-secondary`, `border-border-default`).
-   Spacing is `p-4`, `gap-3` on the token scale. Type is `text-h1`, `text-body`,
-   `text-label`, `text-caption`. There is no default Tailwind palette in this project,
-   so `bg-gray-100` or `text-blue-600` will not exist.
+   Type is `text-h1`, `text-body`, `text-label`, `text-caption`. There is no default
+   Tailwind palette in this project, so `bg-gray-100` or `text-blue-600` will not exist.
+1a. Spacing utilities are multiples of 4px (`--spacing: 4px`), so the number is px/4:
+   `gap-2` 8, `p-4` 16, `gap-6` 24, `p-8` 32, `py-12` 48, `py-16` 64. Only the Figma
+   steps are allowed: **1 2 3 4 6 8 12 16**. `p-5` or `mt-7` fail the guardrail. Sizes
+   (`size-5`, `h-11`, `w-2.5`) use the same 4px base and are not restricted; the control
+   and icon sizes come from `--size-*` tokens.
 2. Never write a raw color, `rgb()`, `hsl()`, a hex value, or an arbitrary pixel value
    like `p-[10px]`. `npm run lint:tokens` fails the build if you do.
 3. Never write a raw `<button>` or `<input>` outside `src/components/`. Use `Button`,

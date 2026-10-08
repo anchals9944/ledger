@@ -17,7 +17,7 @@ export function Card({ variant = "default", title, total, className, children, .
   return (
     <section
       className={clsx(
-        "flex flex-col gap-4 rounded-lg border border-border-default p-5",
+        "flex flex-col gap-4 rounded-lg border border-border-default p-6",
         variant === "summary" ? "bg-bg-subtle" : "bg-bg-surface",
         className,
       )}
