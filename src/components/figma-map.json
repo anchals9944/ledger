@@ -1,0 +1,72 @@
+{
+  "$comment": "Maps Figma component sets in the Ledger Design System file to React components and props. Stands in for Code Connect, which needs an Organization plan. Node IDs are in the Components page of file S6tPQwUGxVVE1bOlAuFRPR.",
+  "Button": {
+    "figmaNodeId": "6:122",
+    "component": "Button",
+    "import": "import { Button } from \"@/components\";",
+    "props": {
+      "Variant": { "prop": "variant", "values": ["primary", "secondary", "tertiary"] },
+      "Size": { "prop": "size", "values": ["md", "lg"] },
+      "State": { "note": "default/hover/focus come from CSS; disabled -> disabled; loading -> loading" },
+      "Label": { "prop": "children" },
+      "Icon left": { "prop": "iconLeft", "note": "pass a Lucide icon element" }
+    },
+    "example": "<Button variant=\"primary\" size=\"lg\" loading={submitting}>Pay $128.00</Button>"
+  },
+  "Input": {
+    "figmaNodeId": "7:37",
+    "component": "Input",
+    "import": "import { Input } from \"@/components\";",
+    "props": {
+      "State": { "note": "default/focus/filled come from CSS; error -> error=\"message\"; disabled -> disabled" },
+      "Label": { "prop": "label" },
+      "Value": { "prop": "value" },
+      "Helper text": { "prop": "helperText" },
+      "Show helper": { "note": "omit helperText to hide" }
+    },
+    "example": "<Input label=\"Card number\" inputMode=\"numeric\" helperText=\"We never store your card number.\" error={errors.card} />"
+  },
+  "Radio card": {
+    "figmaNodeId": "8:44",
+    "component": "RadioCard",
+    "import": "import { RadioCard } from \"@/components\";",
+    "props": {
+      "State": { "note": "unselected/selected -> checked; focus from CSS; disabled -> disabled" },
+      "Title": { "prop": "title" },
+      "Subtitle": { "prop": "subtitle" },
+      "Icon": { "prop": "icon" },
+      "Show icon": { "note": "omit icon to hide" }
+    },
+    "example": "<RadioCard name=\"method\" value=\"card\" title=\"Card\" subtitle=\"Visa, Mastercard, Amex\" icon={<CreditCard strokeWidth={1.5} />} checked={method === \"card\"} onChange={...} />"
+  },
+  "Card": {
+    "figmaNodeId": "8:57",
+    "component": "Card",
+    "import": "import { Card } from \"@/components\";",
+    "props": {
+      "Variant": { "prop": "variant", "values": ["default", "summary"] },
+      "Title": { "prop": "title" },
+      "Content": { "prop": "children" },
+      "total": { "prop": "total", "note": "summary only: { label, value }" }
+    },
+    "example": "<Card variant=\"summary\" title=\"Order summary\" total={{ label: \"Total\", value: \"$128.00\" }}>...</Card>"
+  },
+  "Alert": {
+    "figmaNodeId": "8:93",
+    "component": "Alert",
+    "import": "import { Alert } from \"@/components\";",
+    "props": {
+      "Variant": { "prop": "variant", "values": ["error", "success", "info"] },
+      "Title": { "prop": "title" },
+      "Body": { "prop": "body" },
+      "Action": { "prop": "action", "note": "{ label, onClick }" },
+      "Show action": { "note": "omit action to hide" },
+      "Show close": { "prop": "onClose", "note": "omit to hide" }
+    },
+    "example": "<Alert variant=\"error\" title=\"Your card was declined\" body=\"No charge was made. Try another card or contact your bank.\" action={{ label: \"Use a different card\", onClick: reset }} />"
+  },
+  "icon/*": {
+    "component": "lucide-react",
+    "note": "Figma icon/<name> maps to the Lucide component of the same name in PascalCase: icon/credit-card -> CreditCard, icon/circle-alert -> CircleAlert. Always strokeWidth={1.5}."
+  }
+}
