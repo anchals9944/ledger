@@ -30,7 +30,7 @@ Pass 1 is the first run; Pass 2 is after the fixes.
 | 22 | 390 layout | single column, summary first, 16 gutters, Expiry + CVC in a row | ✓ | ✓ | |
 | 23 | 1280 layout | 960 content, 32 gap, 360 aside, sticky | ✓ | ✓ | sticky is a code addition the frame implies |
 | 24 | Icons | Lucide, 20px, 1.5 stroke, token colors | ✗ | ✓ | F6: `size-5` resolved to nothing, SVG stayed 24 |
-| 25 | Copy | matches frames word for word | ✓ | ✓ | timeout copy exists only in code (F3) |
+| 25 | Copy | matches frames word for word | ✓ | ✓ | timeout frames added to Figma (F3) |
 | 26 | Hit targets | 44 minimum, radio card whole area | ✓ | ✓ | |
 | 27 | Semantics | labels, aria-invalid, role=alert, role=status, fieldset label | ✗ | ✓ | fieldset pointed at a missing id; fixed before e2e |
 | 28 | axe | 0 violations at both widths, every state | ✗ | ✓ | F1 |
@@ -44,5 +44,5 @@ Pass 1: 24 of 33. Pass 2: 33 of 33.
 
 ## Findings
 
-See `docs/qa-findings.md`. F1, F2, F5 and F6 went back into the Figma library; F3 is
-open on the design side; F4 was code only.
+See `docs/qa-findings.md`. F1, F2, F5 and F6 went back into the Figma library. F3 added
+two timeout frames to the Checkout file the same day. F4 was code only.
